@@ -6,10 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = {
-  alignRight: {
-    textAlign: 'right',
-    flex: 1,
-  },
   link: {
     '&:link': {
       textDecoration: 'none',
@@ -17,6 +13,10 @@ const styles = {
     '&:visited': {
       color: 'white',
     }
+  },
+  toolBar : {
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 };
 
@@ -24,11 +24,11 @@ function MyAppBar(props) {
   const {classes} = props;
   return (
     <AppBar position="static">
-      <ToolBar>
+      <ToolBar className={classes.toolBar}>
         <Typography variant="title" color="inherit">
           <Link href="/"><a className={classes.link}>Yet Another Bookshelf</a></Link>
         </Typography>
-        <Typography variant="title" className={classes.alignRight}>
+        <Typography variant="title">
           <Link href="/about"><a className={classes.link}>About</a></Link>
         </Typography>
       </ToolBar>
