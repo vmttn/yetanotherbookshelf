@@ -1,20 +1,36 @@
-import Typography from '@material-ui/core/Typography';
-
 import AppBar from '../components/AppBar';
-import Head from '../components/Head';
+import BookCard from '../components/BookCard';
 
+import Grid from '@material-ui/core/Grid';
+import {withStyles} from '@material-ui/core/styles';
 
-function Landing() {
+const styles = {
+  grid: {
+    padding: "15px",
+  },
+  item: {
+    padding: "10px"
+  }
+};
+
+function Index({classes}) {
   return (
     <React.Fragment>
-      <Head/>
       <AppBar/>
 
-      <Typography variant="headline">
-        This is a bookshelf !
-      </Typography>
+      <Grid className={classes.grid} container justify="space-around" alignContent="space-between">
+        {
+          [1, 2, 3, 4, 5, 6, 7, 9, 10, 11].map(
+            ({index}) =>
+              <Grid className={classes.item} item key={index} xs={12} md={6} xl={4}>
+                <BookCard/>
+              </Grid>
+          )
+        }
+      </Grid>
     </React.Fragment>
   );
 }
 
-export default Landing;
+
+export default withStyles(styles)(Index);

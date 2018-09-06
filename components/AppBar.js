@@ -14,14 +14,13 @@ const styles = {
       color: 'white',
     }
   },
-  toolBar : {
+  toolBar: {
     display: 'flex',
     justifyContent: 'space-between'
   }
 };
 
-function MyAppBar(props) {
-  const {classes} = props;
+function MyAppBar({classes}) {
   return (
     <AppBar position="static">
       <ToolBar className={classes.toolBar}>
