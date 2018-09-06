@@ -11,7 +11,7 @@ const styles = {
       textDecoration: 'none',
     },
     '&:visited': {
-      color: 'white',
+      color: 'inherit',
     }
   },
   toolBar: {
@@ -20,14 +20,17 @@ const styles = {
   }
 };
 
-function MyAppBar({classes}) {
+function MyAppBar({classes, children}) {
   return (
     <AppBar position="static">
       <ToolBar className={classes.toolBar}>
-        <Typography variant="title" color="inherit">
+        <Typography variant="title" color="inherit" noWrap>
           <Link href="/"><a className={classes.link}>Yet Another Bookshelf</a></Link>
         </Typography>
-        <Typography variant="title">
+
+        {children}
+
+        <Typography variant="title" color="inherit" noWrap>
           <Link href="/about"><a className={classes.link}>About</a></Link>
         </Typography>
       </ToolBar>

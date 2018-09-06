@@ -1,5 +1,6 @@
 import AppBar from '../components/AppBar';
 import BookCard from '../components/BookCard';
+import SearchInput from '../components/SearchInput';
 
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
@@ -16,13 +17,15 @@ const styles = {
 function Index({classes}) {
   return (
     <React.Fragment>
-      <AppBar/>
+      <AppBar>
+        <SearchInput/>
+      </AppBar>
 
       <Grid className={classes.grid} container justify="space-around" alignContent="space-between">
         {
           [1, 2, 3, 4, 5, 6, 7, 9, 10, 11].map(
-            ({index}) =>
-              <Grid className={classes.item} item key={index} xs={12} md={6} xl={4}>
+            value =>
+              <Grid className={classes.item} item key={value} xs={12} md={6} xl={4}>
                 <BookCard/>
               </Grid>
           )
