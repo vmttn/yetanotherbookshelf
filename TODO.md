@@ -6,6 +6,7 @@
     * connect the API to a MongoDB server
     * load data from the Book API into the shelf
 * actual about page
+* add history
 
 #### Development
 * add Flow

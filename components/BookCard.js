@@ -31,13 +31,13 @@ function BookCard({classes, book}) {
       <CardMedia
         className={classes.image}
         component="img"
-        image={book.imgLocation}
+        image={`/static/images/${book.isbn}.jpg`}
         title={book.title}
       />
       <CardContent>
         <Typography className={classes.title} variant="title">{book.title}</Typography>
         <Typography className={classes.author} variant="subheading" color="textSecondary">{book.author}</Typography>
-        <Typography>{book.descr}</Typography>
+        <Typography>{book.description}</Typography>
       </CardContent>
     </Card>
   )
