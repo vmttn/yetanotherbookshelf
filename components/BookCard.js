@@ -9,7 +9,7 @@ const styles = {
   card: {
     display: "flex",
     alignItems: "center",
-    height: "100%"
+    height: "300px"
   },
   image: {
     height: "auto",
@@ -25,27 +25,19 @@ const styles = {
   },
 };
 
-function BookCard({classes}) {
+function BookCard({classes, book}) {
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.image}
         component="img"
-        image="/static/images/guerre_et_paix.jpg"
-        title="Guerre et Paix"
+        image={book.imgLocation}
+        title={book.title}
       />
       <CardContent>
-        <Typography className={classes.title} variant="title">
-          Guerre et Paix
-        </Typography>
-        <Typography className={classes.author} variant="subheading" color="textSecondary">
-          Léon Tolstoï
-        </Typography>
-        <Typography>
-          War and Peace is a novel by the Russian author Leo Tolstoy.
-          It is regarded as a central work of world literature
-          and one of Tolstoy's finest literary achievements
-        </Typography>
+        <Typography className={classes.title} variant="title">{book.title}</Typography>
+        <Typography className={classes.author} variant="subheading" color="textSecondary">{book.author}</Typography>
+        <Typography>{book.descr}</Typography>
       </CardContent>
     </Card>
   )
