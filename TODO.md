@@ -6,13 +6,21 @@
     * connect the API to a MongoDB server
     * load data from the Book API into the shelf
 * actual about page
-* add history
+    * good looking stack description
+    * short project presentation 
+* add history to navigation between pages
+* add sorting in shelf (alphabetic, date of publication, etc.)
+* define actual schema (Book, Author, ?User?)
+* allow dynamic addition in the shelf
+* use a `Slide` transition somehow to make things cooler 
 
 #### Development
 * add Flow
 * add ESLint/Prettier
 * use styled-components to create our own visual identity
 * make the project production ready
+    * Heroku
+* (switch to TypeScript eventually)
 
 #### Next
 * move layout (AppBar, etc.) to `<App>`
