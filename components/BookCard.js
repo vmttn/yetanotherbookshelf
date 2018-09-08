@@ -31,7 +31,7 @@ function BookCard({classes, book}) {
       <CardMedia
         className={classes.image}
         component="img"
-        image={`/static/images/${book.isbn}.jpg`}
+        image={`/static/images/covers/${book.isbn}.jpg`}
         title={book.title}
       />
       <CardContent>
