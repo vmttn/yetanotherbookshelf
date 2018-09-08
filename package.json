@@ -8,7 +8,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "server": "nodemon server/app.js -w server"
+    "server": "nodemon server/app.js -w server",
+    "heroku-postbuild": "yarn run build"
   },
   "dependencies": {
     "@material-ui/core": "^3.0.1",
@@ -25,5 +26,8 @@
   "devDependencies": {
     "dotenv": "^6.0.0",
     "nodemon": "^1.18.4"
+  },
+  "engines": {
+    "node": "8.2.1"
   }
 }
