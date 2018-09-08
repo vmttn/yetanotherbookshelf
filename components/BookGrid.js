@@ -22,7 +22,7 @@ class BookGrid extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/v1/public/book')
+    fetch(`https://yetanotherbookshelf.herokuapp.com/api/v1/public/book`)
       .then(res => res.json())
       .then(data => this.setState({books: data}));
   }

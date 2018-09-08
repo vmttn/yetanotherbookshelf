@@ -5,20 +5,20 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 var dev = process.env.NODE_ENV !== 'production';
-if (dev) {
-  require('dotenv').config();
-}
+
+require('dotenv').config();
 
 var port = process.env.PORT || 8000;
-var rootUrl = `http://localhost:${port}`;
+var rootUrl = dev ? `http://localhost:${port}` : 'https://yetanotherbookshelf.herokuapp.com';
 
 var dbUser = process.env.DB_USER;
-var dbHost = process.env.DB_HOST || 'localhost';
+var dbHost = process.env.DB_HOST;
 var dbPort = process.env.DB_PORT;
 var dbPass = process.env.DB_PASS;
 
 
-var app = next();
+var app = next({dev});
+var handle = app.getRequestHandler();
 
 mongoose
   .connect(`mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/bookshelf`, {useNewUrlParser: true})
@@ -42,10 +42,6 @@ app.prepare().then(() => {
   const server = express();
 
   server.use(logger(dev && 'dev'));
-  server.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    next();
-  });
 
   server.get('/api/v1/public/book', (req, res) => {
     Book
@@ -61,6 +57,10 @@ app.prepare().then(() => {
       .exec((err, books) => {
         res.json(books);
       })
+  });
+
+  server.get('*', (req, res) => {
+    return handle(req, res);
   });
 
   server.listen(port, () => {
