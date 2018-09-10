@@ -3,7 +3,7 @@ import React from 'react';
 import {withStyles} from '@material-ui/core/styles'
 import Input from '@material-ui/core/Input';
 
-import {setSearchTerm} from '../lib/actions';
+import {setSearchTerm} from '../store/actions';
 import {connect} from 'react-redux';
 
 const styles = {

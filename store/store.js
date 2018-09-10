@@ -1,4 +1,4 @@
 import {createStore, combineReducers} from 'redux';
-import {searchTerm} from '../lib/reducers';
+import {searchTerm} from './reducers';
 
 export default createStore(combineReducers({searchTerm}));

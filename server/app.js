@@ -41,7 +41,7 @@ var Book = mongoose.model('Book', bookSchema);
 app.prepare().then(() => {
   const server = express();
 
-  server.use(logger(dev && 'dev'));
+  server.use(logger('combined'));
 
   server.get('/api/v1/public/book', (req, res) => {
     Book
