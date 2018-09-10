@@ -13,8 +13,8 @@
 * review dependencies versions
 
 #### Development
+* add Enzyme for shallow testing
 * add Flow
-* add ESLint/Prettier
 * use styled-components to create our own visual identity
 * (switch to TypeScript eventually)
 

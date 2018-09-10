@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "node server/app.js",
     "lint": "eslint components pages lib server",
-    "heroku-postbuild": "yarn run build"
+    "heroku-postbuild": "yarn run build",
+    "test": "jest --coverage"
   },
   "dependencies": {
     "@material-ui/core": "^3.0.1",
@@ -34,6 +35,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.4"
   },
   "engines": {
