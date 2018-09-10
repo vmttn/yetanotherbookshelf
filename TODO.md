@@ -12,14 +12,15 @@
 * add sorting in shelf (alphabetic, date of publication, etc.)
 * define actual schema (Book, Author, ?User?)
 * allow dynamic addition in the shelf
-* use a `Slide` transition somehow to make things cooler 
+* use a `Slide` transition somehow to make things cooler
+* pass config var through a `Context` object
+* add a `BookPage` view
+* SPA ?
 
 #### Development
 * add Flow
 * add ESLint/Prettier
 * use styled-components to create our own visual identity
-* make the project production ready
-    * Heroku
 * (switch to TypeScript eventually)
 
 #### Next
