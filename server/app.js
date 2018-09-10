@@ -53,7 +53,7 @@ app.prepare().then(() => {
 
   server.get('/api/v1/public/book/:isbn', (req, res) => {
     Book
-      .find({ isbn: parseInt(req.params.isbn) })
+      .find({ isbn: parseInt(req.params.isbn, 10) })
       .exec((err, books) => {
         res.json(books);
       });

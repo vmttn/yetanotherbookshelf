@@ -13,5 +13,11 @@ module.exports = {
     es6: true,
     browser: true,
     node: true
+  },
+  rules: {
+    'no-underscore-dangle': 'off',
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'react/jsx-filename-extension': ['error', {extensions: ['.js']}]
   }
 };

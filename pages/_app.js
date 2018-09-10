@@ -1,11 +1,11 @@
 import React from 'react';
-import App, {Container} from 'next/app';
-import {MuiThemeProvider} from '@material-ui/core/styles';
+import App, { Container } from 'next/app';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
+import { Provider as StoreProvider } from 'react-redux';
 import getPageContext from '../lib/getPageContext';
 
-import {Provider as StoreProvider} from 'react-redux';
 import store from '../lib/store/store';
 
 class MyApp extends App {
@@ -13,8 +13,6 @@ class MyApp extends App {
     super(props);
     this.pageContext = getPageContext();
   }
-
-  pageContext = null;
 
   componentDidMount() {
     // Remove the server-side injected CSS.
@@ -25,7 +23,7 @@ class MyApp extends App {
   }
 
   render() {
-    const {Component, pageProps} = this.props;
+    const { Component, pageProps } = this.props;
     return (
       <Container>
         <JssProvider
@@ -38,7 +36,7 @@ class MyApp extends App {
           >
             <StoreProvider store={store}>
               <>
-                <CssBaseline/>
+                <CssBaseline />
                 <Component pageContext={this.pageContext} {...pageProps} />
               </>
             </StoreProvider>

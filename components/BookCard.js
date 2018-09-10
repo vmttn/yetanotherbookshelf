@@ -1,5 +1,6 @@
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react';
 
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';

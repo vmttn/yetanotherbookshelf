@@ -1,17 +1,19 @@
+import React from 'react';
+
 import { connect } from 'react-redux';
 import fetch from 'isomorphic-unfetch';
 
 import { withStyles } from '@material-ui/core/styles/index';
 import Grid from '@material-ui/core/Grid';
 
-import BookCard from "./BookCard";
+import BookCard from './BookCard';
 
 const styles = {
   grid: {
     padding: '15px',
   },
   item: {
-    padding: '10px'
+    padding: '10px',
   },
 };
 
@@ -37,8 +39,7 @@ class BookGrid extends React.Component {
           fb.map(book => (
             <Grid className={classes.item} item key={book.isbn} xs={12} md={6} xl={4}>
               <BookCard book={book} />
-            </Grid>),
-          )
+            </Grid>))
         }
       </Grid>);
   }
