@@ -8,8 +8,8 @@ import { setSearchTerm } from '../lib/store/actions';
 
 const styles = {
   textField: {
-    color: 'inherit',
-  },
+    color: 'inherit'
+  }
 };
 
 function SearchInput(props) {
@@ -30,9 +30,14 @@ function SearchInput(props) {
 const mapStateToProps = state => ({ searchTerm: state.searchTerm });
 
 const mapDispatchToProps = dispatch => ({
-  handleInputChange: (value) => {
+  handleInputChange: value => {
     dispatch(setSearchTerm(value));
-  },
+  }
 });
 
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SearchInput));
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchInput)
+);

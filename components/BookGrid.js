@@ -10,11 +10,11 @@ import BookCard from './BookCard';
 
 const styles = {
   grid: {
-    padding: '15px',
+    padding: '15px'
   },
   item: {
-    padding: '10px',
-  },
+    padding: '10px'
+  }
 };
 
 class BookGrid extends React.Component {
@@ -32,16 +32,18 @@ class BookGrid extends React.Component {
   render() {
     const { classes, searchTerm } = this.props;
     const { books } = this.state;
-    const fb = books.filter(book => `${book.title}${book.description}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase()));
+    const fb = books.filter(book =>
+      `${book.title}${book.description}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     return (
       <Grid className={classes.grid} container justify="space-around" alignContent="space-between">
-        {
-          fb.map(book => (
-            <Grid className={classes.item} item key={book.isbn} xs={12} md={6} xl={4}>
-              <BookCard book={book} />
-            </Grid>))
-        }
-      </Grid>);
+        {fb.map(book => (
+          <Grid className={classes.item} item key={book.isbn} xs={12} md={6} xl={4}>
+            <BookCard book={book} />
+          </Grid>
+        ))}
+      </Grid>
+    );
   }
 }
 

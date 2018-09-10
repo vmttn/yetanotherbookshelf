@@ -10,20 +10,20 @@ const styles = {
   card: {
     display: 'flex',
     alignItems: 'center',
-    height: '300px',
+    height: '300px'
   },
   image: {
     height: 'auto',
     width: 'auto',
     maxHeight: '100%',
-    minWidth: '30%',
+    minWidth: '30%'
   },
   title: {
-    marginBottom: 16,
+    marginBottom: 16
   },
   author: {
-    marginBottom: 12,
-  },
+    marginBottom: 12
+  }
 };
 
 function BookCard(props) {
@@ -37,8 +37,12 @@ function BookCard(props) {
         title={book.title}
       />
       <CardContent>
-        <Typography className={classes.title} variant="title">{book.title}</Typography>
-        <Typography className={classes.author} variant="subheading" color="textSecondary">{book.author}</Typography>
+        <Typography className={classes.title} variant="title">
+          {book.title}
+        </Typography>
+        <Typography className={classes.author} variant="subheading" color="textSecondary">
+          {book.author}
+        </Typography>
         <Typography>{book.description}</Typography>
       </CardContent>
     </Card>
