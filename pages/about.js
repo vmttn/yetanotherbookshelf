@@ -5,7 +5,7 @@ import AppBar from '../components/AppBar';
 function About() {
   return (
     <>
-      <AppBar/>
+      <AppBar />
       <Typography variant="headline">About YABookshelf !</Typography>
     </>
   );

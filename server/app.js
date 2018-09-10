@@ -1,42 +1,42 @@
-var next = require('next');
-var express = require('express');
+const next = require('next');
+const express = require('express');
 
-var logger = require('morgan');
-var mongoose = require('mongoose');
+const logger = require('morgan');
+const mongoose = require('mongoose');
 
-var dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== 'production';
 
 require('dotenv').config();
 
-var port = process.env.PORT || 8000;
-var rootUrl = dev ? `http://localhost:${port}` : 'https://yetanotherbookshelf.herokuapp.com';
+const port = process.env.PORT || 8000;
+const rootUrl = dev ? `http://localhost:${port}` : 'https://yetanotherbookshelf.herokuapp.com';
 
-var dbUser = process.env.DB_USER;
-var dbHost = process.env.DB_HOST;
-var dbPort = process.env.DB_PORT;
-var dbPass = process.env.DB_PASS;
+const dbUser = process.env.DB_USER;
+const dbHost = process.env.DB_HOST;
+const dbPort = process.env.DB_PORT;
+const dbPass = process.env.DB_PASS;
 
 
-var app = next({dev});
-var handle = app.getRequestHandler();
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
 mongoose
-  .connect(`mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/bookshelf`, {useNewUrlParser: true})
+  .connect(`mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/bookshelf`, { useNewUrlParser: true })
   .catch(error => console.log(error));
 
 mongoose.Promise = global.Promise;
 
-var conn = mongoose.connection;
+const conn = mongoose.connection;
 conn.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var bookSchema = new mongoose.Schema({
-  isbn: {type: Number, required: true},
-  title: {type: String, required: true},
-  author: {type: String, required: true},
-  description: String
+const bookSchema = new mongoose.Schema({
+  isbn: { type: Number, required: true },
+  title: { type: String, required: true },
+  author: { type: String, required: true },
+  description: String,
 });
 
-var Book = mongoose.model('Book', bookSchema);
+const Book = mongoose.model('Book', bookSchema);
 
 app.prepare().then(() => {
   const server = express();
@@ -48,20 +48,18 @@ app.prepare().then(() => {
       .find()
       .exec((err, books) => {
         res.json(books);
-      })
+      });
   });
 
   server.get('/api/v1/public/book/:isbn', (req, res) => {
     Book
-      .find({isbn: parseInt(req.params.isbn)})
+      .find({ isbn: parseInt(req.params.isbn) })
       .exec((err, books) => {
         res.json(books);
-      })
+      });
   });
 
-  server.get('*', (req, res) => {
-    return handle(req, res);
-  });
+  server.get('*', (req, res) => handle(req, res));
 
   server.listen(port, () => {
     console.log(`Server started at ${rootUrl}`);

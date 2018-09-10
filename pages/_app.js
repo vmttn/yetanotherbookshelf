@@ -6,7 +6,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from '../lib/getPageContext';
 
 import {Provider as StoreProvider} from 'react-redux';
-import store from '../store/store';
+import store from '../lib/store/store';
 
 class MyApp extends App {
   constructor(props) {

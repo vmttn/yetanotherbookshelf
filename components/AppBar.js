@@ -3,13 +3,13 @@ import Link from 'next/link';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-import SearchInput from '../components/SearchInput';
+import SearchInput from './SearchInput';
 
 const styles = {
   appBar: {
-    position: 'static'
+    position: 'static',
   },
   link: {
     '&:link': {
@@ -17,16 +17,16 @@ const styles = {
     },
     '&:visited': {
       color: 'inherit',
-    }
+    },
   },
   toolBar: {
     display: 'flex',
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 };
 
 function ApplicationBar(props) {
-  const {classes, withSearch} = props;
+  const { classes, withSearch } = props;
   return (
     <AppBar className={classes.appBar}>
       <ToolBar className={classes.toolBar}>
@@ -37,7 +37,7 @@ function ApplicationBar(props) {
           </Link>
         </Typography>
 
-        {withSearch && (<SearchInput/>)}
+        {withSearch && (<SearchInput />)}
 
         <Typography variant="title" color="inherit" noWrap>
           <Link href="/about">
@@ -47,7 +47,7 @@ function ApplicationBar(props) {
 
       </ToolBar>
     </AppBar>
-  )
+  );
 }
 
 export default withStyles(styles)(ApplicationBar);

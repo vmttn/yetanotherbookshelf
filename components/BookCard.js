@@ -1,4 +1,4 @@
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -7,15 +7,15 @@ import CardContent from '@material-ui/core/CardContent';
 
 const styles = {
   card: {
-    display: "flex",
-    alignItems: "center",
-    height: "300px"
+    display: 'flex',
+    alignItems: 'center',
+    height: '300px',
   },
   image: {
-    height: "auto",
-    width: "auto",
-    maxHeight: "100%",
-    minWidth: "30%"
+    height: 'auto',
+    width: 'auto',
+    maxHeight: '100%',
+    minWidth: '30%',
   },
   title: {
     marginBottom: 16,
@@ -25,7 +25,8 @@ const styles = {
   },
 };
 
-function BookCard({classes, book}) {
+function BookCard(props) {
+  const { classes, book } = props;
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -40,7 +41,7 @@ function BookCard({classes, book}) {
         <Typography>{book.description}</Typography>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 export default withStyles(styles)(BookCard);

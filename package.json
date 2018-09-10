@@ -8,6 +8,7 @@
     "dev": "NODE_ENV=dev nodemon server.js -w server",
     "build": "next build",
     "start": "NODE_ENV=production node server/app.js",
+    "lint": "eslint components pages lib server",
     "heroku-postbuild": "yarn run build"
   },
   "dependencies": {
@@ -24,9 +25,14 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "nodemon": "^1.18.4"
   },
   "engines": {
-    "node": "8.2.1"
+    "node": "10.10.0"
   }
 }
