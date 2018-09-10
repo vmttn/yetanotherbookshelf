@@ -5,9 +5,9 @@
   "author": "vmatt",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=dev nodemon server.js -w server",
+    "dev": "nodemon server.js -w server",
     "build": "next build",
-    "start": "NODE_ENV=production node server/app.js",
+    "start": "node server/app.js",
     "lint": "eslint components pages lib server",
     "heroku-postbuild": "yarn run build"
   },
