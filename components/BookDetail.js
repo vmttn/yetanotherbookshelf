@@ -7,10 +7,7 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = {
   wrapper: {
-    width: '90%',
-    marginTop: '20px',
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    padding: '15px'
   },
   container: {
     display: 'flex'
@@ -48,19 +45,19 @@ function BookDetail({ classes, title, descr, isbn }) {
   return (
     <main>
       <div className={classes.center}>
-        <Paper className={classes.wrapper}>
-          <Grid container className={classes.container}>
-            <Grid item md={8} xs={12} className={classes.item}>
+        <Grid container className={classes.container}>
+          <Grid item md={8} xs={12} className={classes.item}>
+            <Paper className={classes.wrapper}>
               <Typography variant="display2">{title}</Typography>
               <Typography variant="body1" align="justify">
                 {descr}
               </Typography>
-            </Grid>
-            <Grid item md={4} xs={12} className={classes.center}>
-              <img className={classes.cover} src={`/static/images/covers/${isbn}.jpg`} alt={title} />
-            </Grid>
+            </Paper>
           </Grid>
-        </Paper>
+          <Grid item md={4} xs={12} className={classes.center}>
+            <img className={classes.cover} src={`/static/images/covers/${isbn}.jpg`} alt={title} />
+          </Grid>
+        </Grid>
       </div>
     </main>
   );
