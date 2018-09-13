@@ -2,6 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import fetch from 'isomorphic-unfetch';
+import Link from 'next/link';
 
 import { withStyles } from '@material-ui/core/styles/index';
 import Slide from '@material-ui/core/Slide';
@@ -15,6 +16,10 @@ const styles = {
   },
   item: {
     padding: '10px'
+  },
+  link: {
+    textDecoration: 'none',
+    outline: 0
   }
 };
 
@@ -37,15 +42,21 @@ class BookGrid extends React.Component {
       `${book.title}${book.description}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase())
     );
     return (
-      <Grid className={classes.grid} container justify="space-around" alignContent="space-between">
-        {fb.map(book => (
-          <Grid className={classes.item} item key={book.isbn} xs={12} md={6} xl={4}>
-            <Slide direction="up" in={true}>
-              <BookCard book={book} />
-            </Slide>
-          </Grid>
-        ))}
-      </Grid>
+      <>
+        <Grid className={classes.grid} container justify="space-around" alignContent="space-between">
+          {fb.map((book, index) => (
+            <Grid className={classes.item} item key={book.isbn} xs={12} md={6} xl={4}>
+              <Link prefetch href={`/book?title=${book.title}&isbn=${book.isbn}`} as="/book">
+                <a className={classes.link}>
+                  <Slide direction="right" in timeout={750 + 500 * Math.floor(index / 3)}>
+                    <BookCard book={book} />
+                  </Slide>
+                </a>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
+      </>
     );
   }
 }
