@@ -13,10 +13,10 @@ const styles = {
     height: '300px'
   },
   image: {
-    height: 'auto',
-    width: 'auto',
-    maxHeight: '100%',
-    minWidth: '30%'
+    width: '30%',
+    height: '100%',
+    objectFit: 'contain',
+    objectPosition: ''
   },
   title: {
     marginBottom: 16
@@ -31,8 +31,9 @@ function BookCard(props) {
   return (
     <Card className={classes.card}>
       <CardMedia
-        className={classes.image}
-        component="img"
+        component={() => (
+          <img className={classes.image} alt={book.title} src={`/static/images/covers/${book.isbn}.jpg`} />
+        )}
         image={`/static/images/covers/${book.isbn}.jpg`}
         title={book.title}
       />
