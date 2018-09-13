@@ -8,7 +8,13 @@ import { setSearchTerm } from '../lib/store/actions';
 
 const styles = {
   textField: {
-    color: 'inherit'
+    color: 'inherit',
+    padding: '2px',
+    backgroundColor: 'rgba(255,255,255,.2)',
+    borderRadius: '3px',
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,.3)'
+    }
   }
 };
 
