@@ -26,14 +26,8 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <Container>
-        <JssProvider
-          registry={this.pageContext.sheetsRegistry}
-          generateClassName={this.pageContext.generateClassName}
-        >
-          <MuiThemeProvider
-            theme={this.pageContext.theme}
-            sheetsManager={this.pageContext.sheetsManager}
-          >
+        <JssProvider registry={this.pageContext.sheetsRegistry} generateClassName={this.pageContext.generateClassName}>
+          <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
             <StoreProvider store={store}>
               <>
                 <CssBaseline />

@@ -1,30 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Document, {Head, Main, NextScript} from 'next/document';
+import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
 
 class MyDocument extends Document {
   render() {
-    const {pageContext} = this.props;
+    const { pageContext } = this.props;
 
     return (
       <html lang="en" dir="ltr">
-      <Head>
-        <meta charSet="utf-8"/>
-        <title>Yet Another Bookshelf</title>
-        <meta name="theme-color" content={pageContext.theme.palette.primary.main}/>
-        {/* PWA primary color */}
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-        {/* Use minimum-scale=1 to enable GPU rasterization */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"/>
-      </Head>
-      <body>
-      <Main/>
-      <NextScript/>
-      </body>
+        <Head>
+          <meta charSet="utf-8" />
+          <title>Yet Another Bookshelf</title>
+          <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
+          {/* PWA primary color */}
+          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+          {/* Use minimum-scale=1 to enable GPU rasterization */}
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
       </html>
     );
   }
@@ -62,7 +59,7 @@ MyDocument.getInitialProps = ctx => {
     };
 
     WrappedComponent.propTypes = {
-      pageContext: PropTypes.object.isRequired,
+      pageContext: PropTypes.object.isRequired
     };
 
     return WrappedComponent;
@@ -77,11 +74,11 @@ MyDocument.getInitialProps = ctx => {
         <style
           id="jss-server-side"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{__html: pageContext.sheetsRegistry.toString()}}
+          dangerouslySetInnerHTML={{ __html: pageContext.sheetsRegistry.toString() }}
         />
         {flush() || null}
       </React.Fragment>
-    ),
+    )
   };
 };
 
