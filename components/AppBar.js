@@ -24,6 +24,13 @@ const styles = {
   toolBar: {
     display: 'flex',
     justifyContent: 'space-between'
+  },
+  about: {
+    gridColumn: '3'
+  },
+  rightGrid: {
+    display: 'grid',
+    gridTemplate: '1fr/ 1fr 2em 1fr'
   }
 };
 
@@ -40,11 +47,16 @@ function ApplicationBar(props) {
 
         {withSearch && <SearchInput />}
 
-        <Typography variant="title" color="inherit" noWrap>
-          <Link href="/about">
-            <a className={classes.link}>About</a>
-          </Link>
-        </Typography>
+        <div className={classes.rightGrid}>
+          <Typography variant="title" color="inherit" noWrap>
+            <a className={classes.link}>GitHub</a>
+          </Typography>
+          <Typography className={classes.about} variant="title" color="inherit" noWrap>
+            <Link href="/about">
+              <a className={classes.link}>About</a>
+            </Link>
+          </Typography>
+        </div>
       </ToolBar>
     </AppBar>
   );
