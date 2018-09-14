@@ -15,8 +15,7 @@ const styles = {
   image: {
     width: '50%',
     height: '100%',
-    objectFit: 'contain',
-    objectPosition: ''
+    objectFit: 'contain'
   },
   title: {
     marginBottom: 16

@@ -7,8 +7,9 @@
 * SPA
 * cache wiki API calls on express server
 * use theme to normalize MUI style
-* prevent unmounting of `BookCard` components in the `BookGrid` (use visibility)
 * reduce static image sizes
+* add GitHub link to `AppBar`
+* on `xs` breakdown : add a search a icon/button, which show search input on when clicked on 
 
 #### Development
 * add Enzyme for shallow testing
