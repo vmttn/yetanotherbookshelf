@@ -12,7 +12,7 @@ import BookCard from './BookCard';
 
 const styles = {
   grid: {
-    padding: '15px'
+    padding: '30px'
   },
   item: {
     padding: '10px'
@@ -39,13 +39,13 @@ class BookGrid extends React.Component {
     const { classes, searchTerm } = this.props;
     const { books } = this.state;
     const fb = books.filter(book =>
-      `${book.title}${book.description}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase())
+      `${book.title}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase())
     );
     return (
       <>
         <Grid className={classes.grid} container justify="space-around" alignContent="space-between">
           {fb.map((book, index) => (
-            <Grid className={classes.item} item key={book.isbn} xs={12} md={6} xl={4}>
+            <Grid className={classes.item} item key={book.isbn} xs={12} md={6} xl={3}>
               <Link prefetch href={`/book?title=${book.title}&isbn=${book.isbn}`} as="/book">
                 <a className={classes.link}>
                   <Slide direction="right" in timeout={750 + 500 * Math.floor(index / 3)}>

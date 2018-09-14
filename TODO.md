@@ -8,6 +8,7 @@
 * cache wiki API calls on express server
 * use theme to normalize MUI style
 * prevent unmounting of `BookCard` components in the `BookGrid` (use visibility)
+* reduce static image sizes
 
 #### Development
 * add Enzyme for shallow testing

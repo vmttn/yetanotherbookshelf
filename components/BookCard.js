@@ -13,7 +13,7 @@ const styles = {
     height: '300px'
   },
   image: {
-    width: '30%',
+    width: '50%',
     height: '100%',
     objectFit: 'contain',
     objectPosition: ''
@@ -44,7 +44,6 @@ function BookCard(props) {
         <Typography className={classes.author} variant="subheading" color="textSecondary">
           {book.author}
         </Typography>
-        <Typography>{book.description}</Typography>
       </CardContent>
     </Card>
   );
