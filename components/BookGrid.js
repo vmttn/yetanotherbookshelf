@@ -6,7 +6,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles/index';
-import Slide from '@material-ui/core/Slide';
+import Grow from '@material-ui/core/Grow';
 import Grid from '@material-ui/core/Grid';
 
 import BookCard from './BookCard';
@@ -48,22 +48,15 @@ class BookGrid extends React.Component {
           {books.map((book, index) => {
             const isMatch = `${book.title}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase());
             return (
-              <Grid
-                className={classNames(classes.item, { [classes.hide]: !isMatch })}
-                item
-                key={book.isbn}
-                xs={12}
-                md={6}
-                xl={3}
-              >
-                <Link prefetch href={`/book?title=${book.title}&isbn=${book.isbn}`} as="/book">
-                  <a className={classes.link}>
-                    <Slide direction="right" in timeout={750 + 500 * Math.floor(index / 3)}>
+              <Grow in timeout={750 + 500 * Math.floor(index / 3)} key={book.isbn}>
+                <Grid className={classNames(classes.item, { [classes.hide]: !isMatch })} item xs={12} md={6} xl={3}>
+                  <Link prefetch href={`/book?title=${book.title}&isbn=${book.isbn}`} as="/book">
+                    <a className={classes.link}>
                       <BookCard book={book} />
-                    </Slide>
-                  </a>
-                </Link>
-              </Grid>
+                    </a>
+                  </Link>
+                </Grid>
+              </Grow>
             );
           })}
         </Grid>
