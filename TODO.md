@@ -9,7 +9,12 @@
 * use theme to normalize MUI style
 * reduce static image sizes
 * add GitHub link to `AppBar`
-* on `xs` breakdown : add a search a icon/button, which show search input on when clicked on 
+* on `xs` breakdown : add a search a icon/button, which show search input on when clicked on
+* BookCard UI : 
+    * make the book cover fill the BookCard
+    * on hovering:
+        * show title/author over the cover
+        * make cover slightly disappear
 
 #### Development
 * add Enzyme for shallow testing

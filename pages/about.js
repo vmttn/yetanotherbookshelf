@@ -8,18 +8,18 @@ import AppBar from '../components/AppBar';
 
 const styles = {
   wrapper: {
+    height: '90%',
     display: 'flex',
     justifyContent: 'center',
-    padding: '15px'
+    alignItems: 'center'
   },
   container: {
-    height: '150px',
     width: '67%',
     display: 'flex',
     justifyContent: 'center'
   },
   item: {
-    height: '100%'
+    height: '150px'
   },
   image: {
     height: '100%',
@@ -33,6 +33,10 @@ function About(props) {
   const logos = ['babel', 'heroku', 'material-ui', 'mongo', 'node', 'redux', 'react', 'webpack'];
   return (
     <>
+      <style global jsx>{`html, body, #__next {
+        height: 100%
+      `}</style>
+
       <AppBar />
 
       <div className={classes.wrapper}>
