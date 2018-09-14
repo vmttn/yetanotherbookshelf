@@ -48,7 +48,7 @@ class BookGrid extends React.Component {
           {books.map((book, index) => {
             const isMatch = `${book.title}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase());
             return (
-              <Grow in timeout={750 + 500 * Math.floor(index / 3)} key={book.isbn}>
+              <Grow in timeout={Math.min(0 + 250 * index, 1500)} key={book.isbn}>
                 <Grid className={classNames(classes.item, { [classes.hide]: !isMatch })} item xs={12} md={6} xl={3}>
                   <Link prefetch href={`/book?title=${book.title}&isbn=${book.isbn}`} as="/book">
                     <a className={classes.link}>
