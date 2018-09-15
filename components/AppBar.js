@@ -9,9 +9,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 import SearchInput from './SearchInput';
 
-const styles = {
+const styles = theme => ({
   appBar: {
-    position: 'static'
+    position: 'static',
+    background: `linear-gradient(45deg, ${theme.palette.primary.dark} 20%, ${theme.palette.primary.light} 80%)`
   },
   link: {
     '&:link': {
@@ -32,7 +33,7 @@ const styles = {
     display: 'grid',
     gridTemplate: '1fr/ 1fr 2em 1fr'
   }
-};
+});
 
 function ApplicationBar(props) {
   const { classes, withSearch } = props;

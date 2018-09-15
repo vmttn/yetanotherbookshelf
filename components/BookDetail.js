@@ -7,16 +7,19 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = {
   wrapper: {
-    padding: '15px'
+    padding: '15px',
+    width: '90%'
   },
   container: {
-    display: 'flex'
-  },
-  item: {
     padding: '20px',
+    height: '90%',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around'
+    alignItems: 'center'
+  },
+  textContainer: {
+    padding: '15px',
+    display: 'flex',
+    justifyContent: 'center'
   },
   cover: {
     maxWidth: '50%',
@@ -24,18 +27,25 @@ const styles = {
     border: '1px solid grey',
     borderRadius: '5px'
   },
-  center: {
+  imageContainer: {
+    padding: '15px',
     display: 'flex',
     justifyContent: 'center',
-    padding: '10px'
+    alignItems: 'center'
+  },
+  error: {
+    height: '90%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 };
 
 function BookDetail({ classes, title, descr, isbn }) {
   if (!title) {
     return (
-      <div className={classes.center}>
-        <Paper className={classes.center}>
+      <div className={classes.error}>
+        <Paper>
           <Typography variant="display1">Nothing to show</Typography>
         </Paper>
       </div>
@@ -43,23 +53,19 @@ function BookDetail({ classes, title, descr, isbn }) {
   }
 
   return (
-    <main>
-      <div className={classes.center}>
-        <Grid container className={classes.container}>
-          <Grid item md={8} xs={12} className={classes.item}>
-            <Paper className={classes.wrapper}>
-              <Typography variant="display2">{title}</Typography>
-              <Typography variant="body1" align="justify">
-                {descr}
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item md={4} xs={12} className={classes.center}>
-            <img className={classes.cover} src={`/static/images/covers/${isbn}.jpg`} alt={title} />
-          </Grid>
-        </Grid>
-      </div>
-    </main>
+    <Grid container className={classes.container}>
+      <Grid item md={8} xs={12} className={classes.textContainer}>
+        <Paper className={classes.wrapper}>
+          <Typography variant="display2">{title}</Typography>
+          <Typography variant="body1" align="justify">
+            {descr}
+          </Typography>
+        </Paper>
+      </Grid>
+      <Grid item md={4} xs={12} className={classes.imageContainer}>
+        <img className={classes.cover} src={`/static/images/covers/${isbn}.jpg`} alt={title} />
+      </Grid>
+    </Grid>
   );
 }
 
