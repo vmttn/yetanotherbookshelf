@@ -6,8 +6,6 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import { Provider as StoreProvider } from 'react-redux';
 import getPageContext from '../lib/getPageContext';
 
-import store from '../lib/store/store';
-
 class MyApp extends App {
   constructor(props) {
     super(props);
@@ -28,7 +26,7 @@ class MyApp extends App {
       <Container>
         <JssProvider registry={this.pageContext.sheetsRegistry} generateClassName={this.pageContext.generateClassName}>
           <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
-            <StoreProvider store={store}>
+            <StoreProvider store={this.pageContext.reduxStore}>
               <>
                 <CssBaseline />
                 <Component pageContext={this.pageContext} {...pageProps} />
