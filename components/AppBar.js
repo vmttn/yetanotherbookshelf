@@ -11,27 +11,16 @@ import SearchInput from './SearchInput';
 
 const styles = theme => ({
   appBar: {
-    position: 'static',
+    position: 'sticky',
     background: `linear-gradient(45deg, ${theme.palette.primary.dark} 20%, ${theme.palette.primary.light} 80%)`
-  },
-  link: {
-    '&:link': {
-      textDecoration: 'none'
-    },
-    '&:visited': {
-      color: 'inherit'
-    }
   },
   toolBar: {
     display: 'flex',
     justifyContent: 'space-between'
   },
-  about: {
-    gridColumn: '3'
-  },
-  rightGrid: {
-    display: 'grid',
-    gridTemplate: '1fr/ 1fr 2em 1fr'
+  rightContainer: {
+    display: 'flex',
+    justifyContent: 'flex-end'
   }
 });
 
@@ -40,27 +29,39 @@ function ApplicationBar(props) {
   return (
     <AppBar className={classes.appBar}>
       <ToolBar className={classes.toolBar}>
-        <Typography variant="title" color="inherit" noWrap>
-          <Link href="/">
-            <a className={classes.link}>Yet Another Bookshelf</a>
-          </Link>
-        </Typography>
-
+        <StyledLink label="Yet Another Bookshelf" link="/" />
         {withSearch && <SearchInput />}
-
-        <div className={classes.rightGrid}>
-          <Typography variant="title" color="inherit" noWrap>
-            <a className={classes.link}>GitHub</a>
-          </Typography>
-          <Typography className={classes.about} variant="title" color="inherit" noWrap>
-            <Link href="/about">
-              <a className={classes.link}>About</a>
-            </Link>
-          </Typography>
+        <div className={classes.rightContainer}>
+          <StyledLink label="GitHub" link="https://github.com/vmttn" />
+          <StyledLink label="About" link="/about" />
         </div>
       </ToolBar>
     </AppBar>
   );
 }
+
+const linkStyles = {
+  link: {
+    outline: 0,
+    margin: '10px',
+    '&:link': {
+      textDecoration: 'none'
+    },
+    '&:visited': {
+      color: 'inherit'
+    }
+  }
+};
+
+const StyledLink = withStyles(linkStyles)(props => {
+  const { label, link, classes } = props;
+  return (
+    <Typography variant="title" noWrap>
+      <Link href={link}>
+        <a className={classes.link}>{label}</a>
+      </Link>
+    </Typography>
+  );
+});
 
 export default withStyles(styles)(ApplicationBar);

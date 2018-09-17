@@ -4,7 +4,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
 
 class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static async getInitialProps({ renderPage }) {
     let pageContext;
     const page = renderPage(Component => {
       const WrappedComponent = props => {

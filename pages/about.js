@@ -33,10 +33,6 @@ function About(props) {
   const logos = ['babel', 'heroku', 'material-ui', 'mongo', 'node', 'redux', 'react', 'webpack'];
   return (
     <>
-      <style global jsx>{`html, body, #__next {
-        height: 100%
-      `}</style>
-
       <AppBar />
 
       <div className={classes.wrapper}>
