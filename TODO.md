@@ -7,7 +7,7 @@
 * SPA
 * cache wiki API calls on express server
 * use theme to normalize MUI style
-* reduce static image sizes
+* minify static images (with webpack loader)
 * add GitHub link to `AppBar`
 * on `xs` breakdown : add a search a icon/button, which show search input on when clicked on
 * BookCard UI : 
@@ -15,11 +15,16 @@
     * on hovering:
         * show title/author over the cover
         * make cover slightly disappear
+* use CDN for images
+* leverage `_document.js` to add transition between main page and book pages 
 
 #### Development
 * add Enzyme for shallow testing
 * add Flow
 * use styled-components to create our own visual identity
+    * in `_document.js` :
+        * unset styled-jsx
+        * set styled-components
 * (switch to TypeScript eventually)
 * review dependencies versions
 

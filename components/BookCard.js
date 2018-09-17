@@ -6,11 +6,15 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 
-const styles = {
+const styles = theme => ({
   card: {
     display: 'flex',
     alignItems: 'center',
-    height: '300px'
+    height: '300px',
+    '&:hover': {
+      boxShadow: theme.shadows[5],
+      transform: 'scale(1.015)'
+    }
   },
   image: {
     width: '50%',
@@ -23,7 +27,7 @@ const styles = {
   author: {
     marginBottom: 12
   }
-};
+});
 
 function BookCard(props) {
   const { classes, book } = props;
