@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import classNames from 'classnames';
 
@@ -9,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles/index';
 import Grow from '@material-ui/core/Grow';
 import Grid from '@material-ui/core/Grid';
 
-import BookCard from './BookCard';
+import BookCard from '../BookCard';
 
 const styles = {
   grid: {
@@ -28,20 +26,8 @@ const styles = {
 };
 
 class BookGrid extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { books: [] };
-  }
-
-  componentDidMount() {
-    fetch('/api/v1/public/book')
-      .then(res => res.json())
-      .then(data => this.setState({ books: data }));
-  }
-
   render() {
-    const { classes, searchTerm } = this.props;
-    const { books } = this.state;
+    const { classes, searchTerm, books } = this.props;
     return (
       <>
         <Grid className={classes.grid} container justify="space-around" alignContent="space-between">
@@ -72,6 +58,4 @@ class BookGrid extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ searchTerm: state.searchTerm });
-
-export default withStyles(styles)(connect(mapStateToProps)(BookGrid));
+export default withStyles(styles)(BookGrid);
