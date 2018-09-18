@@ -49,9 +49,18 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
 
           <style>
-            {`html, body, #__next  {
-            height: 100%
-            }`}
+            {`
+            html, body, #__next {
+              height: 100%
+            }
+            a {
+              outline: 0;
+              color: inherited;
+            }
+            a:hover, a:active, a:link {
+              text-decoration: none;
+            }
+            `}
           </style>
         </Head>
         <body>

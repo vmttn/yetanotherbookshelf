@@ -6,7 +6,7 @@ import Input from '@material-ui/core/Input';
 import { connect } from 'react-redux';
 import { setSearchTerm } from '../lib/store/actions';
 
-const styles = theme => ({
+const styles = {
   textField: {
     width: '15%',
     color: 'inherit',
@@ -20,7 +20,7 @@ const styles = theme => ({
       width: '300px'
     }
   }
-});
+};
 
 function SearchInput(props) {
   const { classes, handleInputChange, searchTerm } = props;

@@ -2,10 +2,10 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
 
 import SearchInput from './SearchInput';
 
@@ -21,47 +21,44 @@ const styles = theme => ({
   rightContainer: {
     display: 'flex',
     justifyContent: 'flex-end'
+  },
+  linkContainer: {
+    margin: 'auto 1em auto 1em'
   }
 });
 
-function ApplicationBar(props) {
-  const { classes, withSearch } = props;
-  return (
-    <AppBar className={classes.appBar}>
-      <ToolBar className={classes.toolBar}>
-        <StyledLink label="Yet Another Bookshelf" link="/" />
-        {withSearch && <SearchInput />}
-        <div className={classes.rightContainer}>
-          <StyledLink label="GitHub" link="https://github.com/vmttn" />
-          <StyledLink label="About" link="/about" />
-        </div>
-      </ToolBar>
-    </AppBar>
-  );
-}
-
-const linkStyles = {
-  link: {
-    outline: 0,
-    margin: '10px',
-    '&:link': {
-      textDecoration: 'none'
-    },
-    '&:visited': {
-      color: 'inherit'
-    }
-  }
-};
-
-const StyledLink = withStyles(linkStyles)(props => {
-  const { label, link, classes } = props;
-  return (
-    <Typography variant="title" noWrap>
-      <Link href={link}>
-        <a className={classes.link}>{label}</a>
+const ApplicationBar = ({ classes, withSearch }) => (
+  <AppBar className={classes.appBar}>
+    <ToolBar className={classes.toolBar}>
+      <Link href="/">
+        <a>
+          <Typography variant="title" noWrap>
+            Yet Another Bookshelf
+          </Typography>
+        </a>
       </Link>
-    </Typography>
-  );
-});
+      {withSearch && <SearchInput />}
+      <div className={classes.rightContainer}>
+        <div className={classes.linkContainer}>
+          <a href="https://github.com/vmttn">
+            <Typography variant="title" noWrap>
+              GitHub
+            </Typography>
+          </a>
+        </div>
+
+        <div className={classes.linkContainer}>
+          <Link href="/about">
+            <a>
+              <Typography variant="title" noWrap>
+                About
+              </Typography>
+            </a>
+          </Link>
+        </div>
+      </div>
+    </ToolBar>
+  </AppBar>
+);
 
 export default withStyles(styles)(ApplicationBar);

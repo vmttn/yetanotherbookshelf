@@ -29,27 +29,22 @@ const styles = theme => ({
   }
 });
 
-function BookCard(props) {
-  const { classes, book } = props;
-  return (
-    <Card className={classes.card}>
-      <CardMedia
-        component={() => (
-          <img className={classes.image} alt={book.title} src={`/static/images/covers/${book.isbn}.jpg`} />
-        )}
-        image={`/static/images/covers/${book.isbn}.jpg`}
-        title={book.title}
-      />
-      <CardContent>
-        <Typography className={classes.title} variant="title">
-          {book.title}
-        </Typography>
-        <Typography className={classes.author} variant="subheading" color="textSecondary">
-          {book.author}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-}
+const BookCard = ({ classes, book }) => (
+  <Card className={classes.card}>
+    <CardMedia
+      component={() => <img className={classes.image} src={`/static/images/covers/${book.isbn}.jpg`} />}
+      image={`/static/images/covers/${book.isbn}.jpg`}
+      title={book.title}
+    />
+    <CardContent>
+      <Typography className={classes.title} variant="title">
+        {book.title}
+      </Typography>
+      <Typography className={classes.author} variant="subheading" color="textSecondary">
+        {book.author}
+      </Typography>
+    </CardContent>
+  </Card>
+);
 
 export default withStyles(styles)(BookCard);
