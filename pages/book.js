@@ -1,3 +1,5 @@
+import React from 'react';
+
 import fetch from 'isomorphic-unfetch';
 
 import AppBar from '../components/AppBar';
