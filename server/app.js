@@ -6,14 +6,14 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
-const dbUser = process.env.DB_USER,
-  dbPass = process.env.DB_PASS,
-  dbHost = process.env.DB_HOST,
-  dbPort = process.env.DB_PORT,
-  port = process.env.PORT || 8000,
-  dev = process.env.NODE_ENV !== 'production';
+const dbUser = process.env.DB_USER;
+const dbPass = process.env.DB_PASS;
+const dbHost = process.env.DB_HOST;
+const dbPort = process.env.DB_PORT;
+const serverPort = process.env.PORT || 8000;
+const dev = process.env.NODE_ENV !== 'production';
 
-const baseUrl = dev ? `http://localhost:${port}` : 'https://yetanotherbookshelf.herokuapp.com';
+const baseUrl = dev ? `http://localhost:${serverPort}` : 'https://yetanotherbookshelf.herokuapp.com';
 
 mongoose
   .connect(
@@ -41,7 +41,7 @@ app.prepare().then(() => {
   // Serve next.js pages
   server.get('*', handleNext);
 
-  server.listen(port, () => {
+  server.listen(serverPort, () => {
     console.log(`Server started at ${baseUrl}`);
   });
 });
