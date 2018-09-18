@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AppBar from '../components/AppBar';
-import BookGrid from '../components/BookGrid';
+import BookGrid from '../components/BookGrid/BookGrid';
 
 function Index() {
   return (

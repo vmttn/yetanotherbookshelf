@@ -32,7 +32,7 @@ const styles = theme => ({
 const BookCard = ({ classes, book }) => (
   <Card className={classes.card}>
     <CardMedia
-      component={() => <img className={classes.image} src={`/static/images/covers/${book.isbn}.jpg`} />}
+      component={() => <img className={classes.image} src={`/static/images/covers/${book.isbn}.jpg`} alt="" />}
       image={`/static/images/covers/${book.isbn}.jpg`}
       title={book.title}
     />

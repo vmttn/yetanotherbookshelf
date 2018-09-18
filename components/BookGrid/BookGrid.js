@@ -16,12 +16,7 @@ const BookGrid = ({ classes, searchTerm, books }) => (
   <Grid container className={classes.grid} justify="space-around" alignContent="space-between">
     {books.map((book, index) => {
       const searchMatch = `${book.title}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase());
-      return (
-        /* TODO: Fix Grow transition */
-        <Grow in timeout={Math.min(250 + 250 * index, 1500)} key={book.isbn}>
-          <BookGridItem book={book} hidden={!searchMatch} />
-        </Grow>
-      );
+      return <BookGridItem book={book} hidden={!searchMatch} key={book.isbn} />;
     })}
   </Grid>
 );

@@ -6,7 +6,10 @@ import { connect } from 'react-redux';
 import BookGrid from './BookGrid';
 
 class BookGridContainer extends React.Component {
-  state = { books: [] };
+  constructor(props) {
+    super(props);
+    this.state = { books: [] };
+  }
 
   componentDidMount() {
     fetch('/api/v1/public/book')
