@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles/index';
@@ -19,7 +21,13 @@ const styles = {
   }
 };
 
-const SearchInput = ({ classes, handleInputChange, searchTerm }) => (
+type searchInputProps = {
+  classes: Object,
+  searchTerm: string,
+  handleInputChange: (e: SyntheticInputEvent<HTMLInputElement>) => void
+};
+
+const SearchInput = ({ classes, handleInputChange, searchTerm }: searchInputProps) => (
   <Input
     id="search"
     label="Search"

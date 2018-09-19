@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
 
@@ -8,13 +7,9 @@ class MyDocument extends Document {
     let pageContext;
     const page = renderPage(Component => {
       const WrappedComponent = props => {
+        // eslint-disable-next-line prefer-destructuring, react/destructuring-assignment
         pageContext = props.pageContext;
         return <Component {...props} />;
-      };
-
-      // TODO: remove this when switching to Flow
-      WrappedComponent.propTypes = {
-        pageContext: PropTypes.object.isRequired
       };
 
       return WrappedComponent;

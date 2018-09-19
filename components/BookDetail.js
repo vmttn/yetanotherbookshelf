@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -41,7 +43,14 @@ const styles = {
   }
 };
 
-function BookDetail({ classes, title, descr, isbn }) {
+type bookDetailProps = {
+  classes: Object,
+  isbn: string,
+  title: string,
+  descr: string
+};
+
+function BookDetail({ classes, title, descr, isbn }: bookDetailProps) {
   if (!title) {
     return (
       <div className={classes.error}>

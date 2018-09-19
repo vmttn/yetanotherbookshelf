@@ -14,24 +14,24 @@ function Book(props) {
   );
 }
 
-Book.getInitialProps = async ({ query }) => {
-  const params = {
-    action: 'query',
-    format: 'json',
-    prop: 'extracts',
-    generator: 'search',
-    exsentences: '5',
-    explaintext: 1,
-    gsrsearch: query.title,
-    gsrlimit: '1',
-    origin: '*'
-  };
+const baseParams = {
+  action: 'query',
+  format: 'json',
+  prop: 'extracts',
+  generator: 'search',
+  exsentences: '5',
+  explaintext: 1,
+  gsrlimit: '1',
+  origin: '*'
+};
 
-  const url =
-    'https://fr.wikipedia.org/w/api.php?' +
-    Object.keys(params)
-      .map(k => `${k}=${params[k]}`)
-      .join('&');
+Book.getInitialProps = async ({ query }) => {
+  const params = Object.assign({ gsrsearch: query.title }, baseParams);
+  const baseApiUrl = 'https://fr.wikipedia.org/w/api.php';
+
+  const url = `${baseApiUrl}?${Object.keys(params)
+    .map(k => `${k}=${params[k]}`)
+    .join('&')}`;
 
   const response = await fetch(url, { mode: 'cors' });
   const json = await response.json();

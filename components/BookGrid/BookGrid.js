@@ -1,7 +1,8 @@
+// @flow
+
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles/index';
-import Grow from '@material-ui/core/Grow';
 import Grid from '@material-ui/core/Grid';
 
 import BookGridItem from './BookGridItem';
@@ -12,9 +13,15 @@ const styles = {
   }
 };
 
-const BookGrid = ({ classes, searchTerm, books }) => (
+type BookGridProps = {
+  classes: Object,
+  searchTerm: string,
+  books: Array<bookType>
+};
+
+const BookGrid = ({ classes, searchTerm, books }: BookGridProps) => (
   <Grid container className={classes.grid} justify="space-around" alignContent="space-between">
-    {books.map((book, index) => {
+    {books.map(book => {
       const searchMatch = `${book.title}${book.author}${book.isbn}`.toLowerCase().includes(searchTerm.toLowerCase());
       return <BookGridItem book={book} hidden={!searchMatch} key={book.isbn} />;
     })}

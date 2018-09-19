@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -30,7 +32,7 @@ const styles = {
 
 const logos = ['babel', 'heroku', 'material-ui', 'mongo', 'node', 'redux', 'react', 'webpack'];
 
-const About = ({ classes }) => (
+const About = ({ classes }: { classes: Object }) => (
   <>
     <AppBar />
 

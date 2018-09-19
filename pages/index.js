@@ -1,7 +1,9 @@
+// @flow
+
 import React from 'react';
 
 import AppBar from '../components/AppBar';
-import BookGrid from '../components/BookGrid/BookGrid';
+import BookGrid from '../components/BookGrid';
 
 function Index() {
   return (

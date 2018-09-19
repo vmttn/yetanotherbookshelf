@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import fetch from 'isomorphic-unfetch';
@@ -5,7 +7,7 @@ import { connect } from 'react-redux';
 
 import BookGrid from './BookGrid';
 
-class BookGridContainer extends React.Component {
+class BookGridContainer extends React.Component<{ searchTerm: string }, { books: Array<bookType> }> {
   constructor(props) {
     super(props);
     this.state = { books: [] };

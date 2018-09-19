@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import Link from 'next/link';
@@ -9,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 import SearchInput from './SearchInput';
 
-const styles = theme => ({
+const styles = (theme: Object) => ({
   appBar: {
     position: 'sticky',
     background: `linear-gradient(45deg, ${theme.palette.primary.dark} 20%, ${theme.palette.primary.light} 80%)`
@@ -27,7 +29,7 @@ const styles = theme => ({
   }
 });
 
-const ApplicationBar = ({ classes, withSearch }) => (
+const ApplicationBar = ({ classes, withSearch }: { classes: Object, withSearch: string }) => (
   <AppBar className={classes.appBar}>
     <ToolBar className={classes.toolBar}>
       <Link href="/">

@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -6,7 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 
-const styles = theme => ({
+const styles = (theme: Object) => ({
   card: {
     display: 'flex',
     alignItems: 'center',
@@ -29,7 +31,7 @@ const styles = theme => ({
   }
 });
 
-const BookCard = ({ classes, book }) => (
+const BookCard = ({ classes, book }: { classes: Object, book: bookType }) => (
   <Card className={classes.card}>
     <CardMedia
       component={() => <img className={classes.image} src={`/static/images/covers/${book.isbn}.jpg`} alt="" />}
