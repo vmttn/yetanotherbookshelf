@@ -25,20 +25,25 @@ const styles = (theme: Object) => ({
     justifyContent: 'flex-end'
   },
   linkContainer: {
-    margin: 'auto 1em auto 1em'
+    margin: 'auto 1em auto 1em',
+    '&:hover': {
+      opacity: '0.5'
+    }
   }
 });
 
 const ApplicationBar = ({ classes, withSearch }: { classes: Object, withSearch: string }) => (
   <AppBar className={classes.appBar}>
     <ToolBar className={classes.toolBar}>
-      <Link href="/">
-        <a>
-          <Typography variant="title" noWrap>
-            Yet Another Bookshelf
-          </Typography>
-        </a>
-      </Link>
+      <div className={classes.linkContainer}>
+        <Link href="/">
+          <a>
+            <Typography variant="title" noWrap>
+              Yet Another Bookshelf
+            </Typography>
+          </a>
+        </Link>
+      </div>
       {withSearch && <SearchInput />}
       <div className={classes.rightContainer}>
         <div className={classes.linkContainer}>

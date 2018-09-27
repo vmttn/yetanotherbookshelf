@@ -14,10 +14,15 @@
     * on hovering:
         * show title/author over the cover
         * make cover slightly disappear
-* use CDN for images (Cloudinary free-tier)
+* use CDN :
+    * for images (Cloudinary free-tier)
+    * for material UI ?
 * audit with Lighthouse
 * leverage `_document.js` to add transition between main page and book pages
 * use font-size to make things more responsive
+* paginate boodgrid
+* search : add section for author and allow searching by author or isbn
+* add isLoading state and make a presentional loading component with CSS animation  
 
 #### Development
 * add Enzyme for shallow testing

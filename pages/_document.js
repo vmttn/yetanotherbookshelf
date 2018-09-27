@@ -46,7 +46,7 @@ class MyDocument extends Document {
           <style>
             {`
             html, body, #__next {
-              height: 100%
+              height: 100%;
             }
             a {
               outline: 0;
