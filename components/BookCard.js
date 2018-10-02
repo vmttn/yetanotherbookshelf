@@ -2,11 +2,17 @@
 
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import { deleteBook } from '../lib/store/actions/books';
 
 const styles = (theme: Object) => ({
   card: {
@@ -31,7 +37,13 @@ const styles = (theme: Object) => ({
   }
 });
 
-const BookCard = ({ classes, book }: { classes: Object, book: bookType }) => (
+type bookCardProps = {
+  classes: Object,
+  book: bookType,
+  handleDelete: number => void
+};
+
+const BookCard = ({ classes, book, handleDelete }: bookCardProps) => (
   <Card className={classes.card}>
     <CardMedia
       component={() => <img className={classes.image} src={`/static/images/covers/${book.isbn}.jpg`} alt="" />}
@@ -45,8 +57,21 @@ const BookCard = ({ classes, book }: { classes: Object, book: bookType }) => (
       <Typography className={classes.author} variant="subheading" color="textSecondary">
         {book.author}
       </Typography>
+      <Button
+        onClick={e => {
+          e.preventDefault();
+          handleDelete(book.isbn);
+        }}
+      >
+        <DeleteIcon />
+      </Button>
     </CardContent>
   </Card>
 );
 
-export default withStyles(styles)(BookCard);
+const mapDispatchToProps = dispatch => ({ handleDelete: id => dispatch(deleteBook(id)) });
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withStyles(styles)(BookCard));
