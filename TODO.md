@@ -17,7 +17,7 @@
 * use CDN :
     * for images (Cloudinary free-tier)
     * for material UI ?
-* audit with Lighthouse
+* audit with Lighthouse, codacy. CircleCI, Sentry
 * leverage `_document.js` to add transition between main page and book pages
 * use font-size to make things more responsive
 * paginate boodgrid
