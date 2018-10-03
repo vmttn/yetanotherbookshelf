@@ -24,14 +24,9 @@ const SearchInputContainer = props => (
 );
 
 const mapStateToProps = state => ({ searchTerm: state.searchTerm });
-
-const mapDispatchToProps = dispatch => ({
-  handleInputChange: value => {
-    dispatch(setSearchTerm(value));
-  }
-});
+const actions = { handleInputChange: value => setSearchTerm(value) };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(SearchInputContainer);

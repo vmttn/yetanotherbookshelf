@@ -69,9 +69,9 @@ const BookCard = ({ classes, book, handleDelete }: bookCardProps) => (
   </Card>
 );
 
-const mapDispatchToProps = dispatch => ({ handleDelete: id => dispatch(deleteBook(id)) });
+const actions = { handleDelete: id => deleteBook(id) };
 
 export default connect(
   null,
-  mapDispatchToProps
+  actions
 )(withStyles(styles)(BookCard));
