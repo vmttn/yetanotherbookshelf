@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { Provider as StoreProvider } from 'react-redux';
 import getPageContext from '../lib/getPageContext';
+import { ApolloProvider } from 'react-apollo';
 
 class MyApp extends App {
   constructor(props) {
@@ -27,10 +28,12 @@ class MyApp extends App {
         <JssProvider registry={this.pageContext.sheetsRegistry} generateClassName={this.pageContext.generateClassName}>
           <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
             <StoreProvider store={this.pageContext.reduxStore}>
-              <>
-                <CssBaseline />
-                <Component pageContext={this.pageContext} {...pageProps} />
-              </>
+              <ApolloProvider client={this.pageContext.apolloClient}>
+                <>
+                  <CssBaseline />
+                  <Component pageContext={this.pageContext} {...pageProps} />
+                </>
+              </ApolloProvider>
             </StoreProvider>
           </MuiThemeProvider>
         </JssProvider>
