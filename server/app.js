@@ -1,5 +1,6 @@
 const next = require('next');
 const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
 
 const logger = require('morgan');
 const mongoose = require('mongoose');
@@ -28,12 +29,15 @@ const conn = mongoose.connection;
 conn.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const apiRouter = require('./routes');
+const { typeDefs, resolvers } = require('./graphql');
 
 const app = next({ dev });
 const handleNext = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
+  const apolloServer = new ApolloServer({ typeDefs, resolvers });
+  apolloServer.applyMiddleware({ app: server });
 
   server.use(logger('combined'));
   // Backend API
@@ -43,5 +47,6 @@ app.prepare().then(() => {
 
   server.listen(serverPort, () => {
     console.log(`Server started at ${baseUrl}`);
+    console.log(`GraphQL API available at ${baseUrl}${apolloServer.graphqlPath}`);
   });
 });
