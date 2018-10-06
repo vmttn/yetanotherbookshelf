@@ -30,7 +30,7 @@ const styles = {
   }
 };
 
-const logos = ['babel', 'heroku', 'material-ui', 'mongo', 'node', 'redux', 'react', 'webpack'];
+const logos = ['babel', 'heroku', 'material-ui', 'mongo', 'node', 'redux', 'react', 'webpack', 'graphql', 'apollo'];
 
 const About = ({ classes }: { classes: Object }) => (
   <>
