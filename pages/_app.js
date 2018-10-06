@@ -1,16 +1,19 @@
 import React from 'react';
-import App, { Container } from 'next/app';
+import NextApp, { Container } from 'next/app';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { Provider as StoreProvider } from 'react-redux';
 import getPageContext from '../lib/getPageContext';
 import { ApolloProvider } from 'react-apollo';
+import withApolloClient from '../lib/withApolloClient';
+import initReduxStore from '../lib/initRedux';
 
-class MyApp extends App {
+class App extends NextApp {
   constructor(props) {
     super(props);
     this.pageContext = getPageContext();
+    this.reduxStore = initReduxStore();
   }
 
   componentDidMount() {
@@ -22,13 +25,13 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apolloClient } = this.props;
     return (
       <Container>
         <JssProvider registry={this.pageContext.sheetsRegistry} generateClassName={this.pageContext.generateClassName}>
           <MuiThemeProvider theme={this.pageContext.theme} sheetsManager={this.pageContext.sheetsManager}>
-            <StoreProvider store={this.pageContext.reduxStore}>
-              <ApolloProvider client={this.pageContext.apolloClient}>
+            <StoreProvider store={this.reduxStore}>
+              <ApolloProvider client={apolloClient}>
                 <>
                   <CssBaseline />
                   <Component pageContext={this.pageContext} {...pageProps} />
@@ -42,4 +45,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default withApolloClient(App);
