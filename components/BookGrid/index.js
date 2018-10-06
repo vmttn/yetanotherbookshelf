@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -18,9 +19,11 @@ const GET_BOOKS_QUERY = gql`
   }
 `;
 
-const BookGridContainer = ({ searchTerm }: { searchTerm: string }) => (
-  <Query query={GET_BOOKS_QUERY}>{({ data }) => <BookGrid searchTerm={searchTerm} books={data.books || []} />}</Query>
-);
+function BookGridContainer({ searchTerm }: { searchTerm: string }) {
+  return (
+    <Query query={GET_BOOKS_QUERY}>{({ data }) => <BookGrid searchTerm={searchTerm} books={data.books || []} />}</Query>
+  );
+}
 
 const mapStateToProps = state => ({ searchTerm: state.searchTerm });
 

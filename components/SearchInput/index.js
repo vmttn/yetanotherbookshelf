@@ -5,14 +5,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setSearchTerm } from '../../lib/store/actions';
 
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
 import SearchInput from './SearchInput';
 
-const SearchInputContainer = props => {
-  const { bookList } = props;
-  return <SearchInput {...props} options={bookList} />;
-};
+const GET_BOOKS_QUERY = gql`
+  {
+    books {
+      isbn
+      title
+    }
+  }
+`;
 
-const mapStateToProps = state => ({ searchTerm: state.searchTerm, bookList: state.bookList });
+const SearchInputContainer = props => (
+  <Query query={GET_BOOKS_QUERY}>{({ data }) => <SearchInput {...props} options={data.books || []} />}</Query>
+);
+
+const mapStateToProps = state => ({ searchTerm: state.searchTerm });
 
 const mapDispatchToProps = dispatch => ({
   handleInputChange: value => {
