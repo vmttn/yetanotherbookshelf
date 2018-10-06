@@ -26,7 +26,7 @@ const baseParams = {
 };
 
 Book.getInitialProps = async ({ query }) => {
-  const params = Object.assign({ gsrsearch: query.title }, baseParams);
+  const params = { gsrsearch: query.title, ...baseParams };
   const baseApiUrl = 'https://fr.wikipedia.org/w/api.php';
 
   const url = `${baseApiUrl}?${Object.keys(params)
