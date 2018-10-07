@@ -9,7 +9,7 @@ import { Query } from 'react-apollo';
 
 import BookGrid from './BookGrid';
 
-const GET_BOOKS_QUERY = gql`
+const GET_BOOKS = gql`
   {
     books {
       isbn
@@ -20,9 +20,7 @@ const GET_BOOKS_QUERY = gql`
 `;
 
 function BookGridContainer({ searchTerm }: { searchTerm: string }) {
-  return (
-    <Query query={GET_BOOKS_QUERY}>{({ data }) => <BookGrid searchTerm={searchTerm} books={data.books || []} />}</Query>
-  );
+  return <Query query={GET_BOOKS}>{({ data }) => <BookGrid searchTerm={searchTerm} books={data.books || []} />}</Query>;
 }
 
 const mapStateToProps = state => ({ searchTerm: state.searchTerm });

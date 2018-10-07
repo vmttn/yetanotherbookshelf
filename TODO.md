@@ -23,6 +23,7 @@
 * paginate boodgrid
 * search : add section for author and allow searching by author or isbn
 * add isLoading state and make a presentional loading component with CSS animation  
+* NavBar: implement the priority+ pattern
 
 #### Development
 * add Enzyme for shallow testing

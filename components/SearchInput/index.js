@@ -10,7 +10,7 @@ import { Query } from 'react-apollo';
 
 import SearchInput from './SearchInput';
 
-const GET_BOOKS_QUERY = gql`
+const GET_BOOKS = gql`
   {
     books {
       isbn
@@ -20,7 +20,7 @@ const GET_BOOKS_QUERY = gql`
 `;
 
 const SearchInputContainer = props => (
-  <Query query={GET_BOOKS_QUERY}>{({ data }) => <SearchInput {...props} options={data.books || []} />}</Query>
+  <Query query={GET_BOOKS}>{({ data }) => <SearchInput {...props} options={data.books || []} />}</Query>
 );
 
 const mapStateToProps = state => ({ searchTerm: state.searchTerm });

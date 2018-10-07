@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import { connect } from 'react-redux';
-
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -12,7 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { deleteBook } from '../lib/store/actions/books';
+import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
 
 const styles = (theme: Object) => ({
   card: {
@@ -39,11 +38,24 @@ const styles = (theme: Object) => ({
 
 type bookCardProps = {
   classes: Object,
-  book: bookType,
-  handleDelete: number => void
+  book: bookType
 };
 
-const BookCard = ({ classes, book, handleDelete }: bookCardProps) => (
+const DELETE_BOOK = gql`
+  mutation DeleteBook($isbn: String!) {
+    deleteBook(isbn: $isbn)
+  }
+`;
+
+const GET_BOOKS = gql`
+  {
+    books {
+      isbn
+    }
+  }
+`;
+
+const BookCard = ({ classes, book }: bookCardProps) => (
   <Card className={classes.card}>
     <CardMedia
       component={() => <img className={classes.image} src={`/static/images/covers/${book.isbn}.jpg`} alt="" />}
@@ -57,21 +69,30 @@ const BookCard = ({ classes, book, handleDelete }: bookCardProps) => (
       <Typography className={classes.author} variant="subheading" color="textSecondary">
         {book.author}
       </Typography>
-      <Button
-        onClick={e => {
-          e.preventDefault();
-          handleDelete(book.isbn);
+      <Mutation
+        mutation={DELETE_BOOK}
+        ignoreResults
+        update={cache => {
+          const { books } = cache.readQuery({ query: GET_BOOKS });
+          cache.writeQuery({
+            query: GET_BOOKS,
+            data: { books: books.filter(b => b.isbn !== book.isbn) }
+          });
         }}
       >
-        <DeleteIcon />
-      </Button>
+        {deleteBook => (
+          <Button
+            onClick={e => {
+              e.preventDefault();
+              deleteBook({ variables: { isbn: book.isbn } });
+            }}
+          >
+            <DeleteIcon />
+          </Button>
+        )}
+      </Mutation>
     </CardContent>
   </Card>
 );
 
-const actions = { handleDelete: id => deleteBook(id) };
-
-export default connect(
-  null,
-  actions
-)(withStyles(styles)(BookCard));
+export default withStyles(styles)(BookCard);
