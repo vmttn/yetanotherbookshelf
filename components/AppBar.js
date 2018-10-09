@@ -47,7 +47,7 @@ const ApplicationBar = ({ classes, withSearch }: { classes: Object, withSearch: 
       {withSearch && <SearchInput />}
       <div className={classes.rightContainer}>
         <div className={classes.linkContainer}>
-          <a href="https://github.com/vmttn">
+          <a href="https://github.com/vmttn/yetanotherbookshelf">
             <Typography variant="title" noWrap>
               GitHub
             </Typography>
