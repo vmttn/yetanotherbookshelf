@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/yetanotherbookshelf
+    docker:
+      - image: circleci/node:10-stretch
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run : yarn install
+      - run : yarn build
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
