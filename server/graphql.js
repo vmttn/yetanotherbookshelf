@@ -29,7 +29,12 @@ const resolvers = {
       return book.save();
     },
     deleteBook(parent, args, context, info) {
-      return !!Book.findOneAndDelete({ isbn: args.isbn }).exec();
+      // Not allowed for until we have proper authentication
+      // Here were prevent user from hitting the backend DB.
+      // The book will be temporarely deleted on the client view.
+      // And reappear once apollo updates its cache or user reloadds.
+      //return !!Book.findOneAndDelete({ isbn: args.isbn }).exec();
+      return true;
     }
   }
 };
